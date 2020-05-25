@@ -1,0 +1,38 @@
+@import "../themes/themify";
+@import "../utils/px2rem";
+@import "../base/reset-input";
+
+@mixin input($themes) {
+    .input {
+        .input-label {
+            display: block;
+        }
+
+        input {
+            @include reset-input();
+            font-family: inherit;
+            outline: unset;
+            box-sizing: border-box;
+        }
+
+        @include themify($themes) {
+            input {
+                border: themed(border);
+                background: themed(bg-normal);
+
+                &::placeholder {
+                    color: themed(placeholder-color);
+                }
+                &:focus {
+                    border: themed(focused-border);
+                }
+                &:disabled {
+                    background: themed(bg-disabled);
+                    &::placeholder {
+                        color: themed(placeholder-disabled-color);
+                    }
+                }
+            }
+        }
+    }
+}

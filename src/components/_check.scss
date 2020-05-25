@@ -1,0 +1,83 @@
+@import "../themes/themify";
+@import "../base/reset-checkbox";
+
+@keyframes checkboxAnimation {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@mixin check($themes) {
+    .check {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        input[type="checkbox"] {
+            @include reset-checkbox();
+            position: absolute;
+            background: unset;
+            box-sizing: border-box;
+            border-radius: inherit;
+        }
+
+        .thumb {
+            display: block;
+            position: relative;
+            box-sizing: content-box;
+            border-radius: inherit;
+        }
+
+        input[type="checkbox"]:checked + .thumb:after {
+            content: "";
+            background-size: 75% !important;
+            background-position: center !important;
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            animation: checkboxAnimation 0.25s;
+            transform: scale(1);
+        }
+
+        @include themify($themes) {
+            color: themed(font-color);
+            font-family: themed(font);
+            font-size: themed(font-size);
+            border-radius: themed(border-radius);
+
+            &:hover {
+                .thumb {
+                    background-color: themed(bg-hover);
+                }
+            }
+
+            .thumb {
+                margin-right: 0.5rem;
+                width: themed(size);
+                height: themed(size);
+                min-width: themed(size);
+                border: themed(border);
+                background-color: themed(bg-normal);
+            }
+
+            input[type="checkbox"] {
+                height: themed(size);
+                width: themed(size);
+            }
+
+            input[type="checkbox"]:checked + .thumb:after {
+                background: url(themed(checked-icon)) no-repeat;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@mixin validation($color-invalid) {
+    .required {
+        color: $color-invalid;
+        margin-left: 5px;
+    }
+
+    .validator__required {
+        // @include bold;
+        color: $color-invalid;
+    }
+
+    .validator__message {
+        color: $color-invalid;
+        padding-top: 10px;
+    }
+
+    .validator__summary {
+        padding: 20px;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .ng-touched.ng-invalid {
+        border-color: $color-invalid !important;
+    }
+
+    .validator {
+        margin: 0.4rem 0;
+        font-size: 0.8rem;
+        color: $color-invalid;
+
+        + .message {
+            font-weight: bold;
+        }
+
+        + .required {
+            margin: 0;
+            border-color: 0.03rem solid $color-invalid;
+        }
+    }
+}

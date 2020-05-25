@@ -1,0 +1,21 @@
+{
+  "name": "iconsoft-ui-kit",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.scss",
+  "scripts": {
+    "publish": "npm run build",
+    "build": "npm run build:prod && npm run build:dev",
+    "build:prod": "node-sass --include-path scss src/theme-dark.scss dist/iconsoft-ui-kit.dark.min.css  --output-style compressed",
+    "build:dev": "node-sass --include-path scss src/theme-light.scss dist/iconsoft-ui-kit.light.min.css  --output-style compressed",
+    "watch": "nodemon -e scss -x \"npm run build\""
+  },
+  "devDependencies": {
+    "autoprefixer": "9.8.0",
+    "cpx": "1.5.0",
+    "node-sass": "4.14.1",
+    "nodemon": "2.0.4",
+    "postcss": "^7.0.30"
+  },
+  "dependencies": {}
+}

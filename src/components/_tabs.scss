@@ -1,0 +1,33 @@
+@mixin tabs($themes) {
+    .tabs {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+
+        @include themify($themes) {
+            border-bottom: themed(border-bottom);
+
+            .tabs-item {
+                text-decoration: none;
+                border-bottom: themed(item-border-weight) solid transparent;
+                color: themed(color-inactive);
+                display: inline-block;
+                margin: 0;
+                min-width: themed(min-width);
+                padding: themed(padding);
+                position: relative;
+
+                &:hover {
+                    color: themed(color-hover);
+                    text-decoration: none;
+                }
+
+                &.is-selected {
+                    border-bottom: themed(item-border-weight) solid themed(color-selected);
+                    color: themed(color-selected);
+                }
+            }
+        }
+    }
+}

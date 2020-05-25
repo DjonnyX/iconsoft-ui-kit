@@ -1,0 +1,14 @@
+@mixin reset-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    border: none;
+
+    &:focus {
+        outline: 0;
+    }
+}

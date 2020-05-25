@@ -1,0 +1,74 @@
+@import "../themes/themify";
+@import "../base/reset-select";
+
+@mixin select($themes) {
+    .select {
+        display: inline-block;
+        position: relative;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.--full-width {
+            display: block;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+        }
+
+        &::after {
+            content: "";
+            pointer-events: none;
+            background-size: 75% !important;
+            background-position: center !important;
+            position: absolute;
+            display: block;
+            z-index: 1;
+            transform: scale(1);
+            top: 25%;
+            right: 2px;
+        }
+
+        @include themify($themes) {
+            background-color: themed(bg-color);
+            margin-right: themed(m-right);
+
+            select {
+                @include reset-select();
+                appearance: none;
+                background-color: transparent;
+                border: themed(border);
+                border-radius: themed(border-radius);
+                color: themed(font-color);
+                display: block;
+                font-size: themed(font-size);
+                line-height: themed(line-height);
+                margin: 0;
+                padding: themed(padding);
+                padding-right: themed(padding-right);
+                transition: background-color 0.2s ease-in-out;
+                width: 100%;
+
+                &:active,
+                &:focus {
+                    background-color: themed(bg-focused);
+                    border: 0;
+                    outline: none;
+                    border: themed(border);
+                    border-radius: themed(border-radius);
+                }
+
+                &::-ms-expand {
+                    display: none;
+                }
+            }
+
+            &::after {
+                background: url(themed(icon)) no-repeat;
+                height: themed(icon-size);
+                width: themed(icon-size);
+            }
+        }
+    }
+}

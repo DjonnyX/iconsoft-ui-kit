@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 25px;
+        }
+
+        .td-center .check {
+            justify-content: center;
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="light">
+    <div class="header">
+        <button id="toggle-theme" class="button button--primary"></button>
+    </div>
+    <form class="form form--primary z-elevation-2">
+        <h2>Checkboxes</h2>
+        <!-- Checkbox -->
+        <div style="display: flex; flex-direction: column;">
+            <label class="check check--primary">
+                <input type="checkbox">
+                <span class="thumb"></span>Checkbox primary
+            </label>
+            <!-- Checkbox -->
+            <label class="check check--secondary">
+                <input type="checkbox">
+                <span class="thumb"></span>Checkbox secondary
+            </label>
+        </div>
+    </form>
+
+    <form class="form form--primary z-elevation-2">
+        <h2>Radio</h2>
+        <!-- Radio -->
+        <label class="radio radio--primary">
+            <input name="radio" type="radio" value="">
+            <span class="thumb"></span>Radio 1
+        </label>
+        <!-- Radio -->
+        <label class="radio radio--primary">
+            <input name="radio" type="radio" value="">
+            <span class="thumb"></span>Radio 2
+        </label>
+        <!-- Radio -->
+        <label class="radio radio--primary">
+            <input name="radio" type="radio" value="">
+            <span class="thumb"></span>Radio 3
+        </label>
+    </form>
+
+    <form class="form form--primary z-elevation-6">
+        <h2>Inputs</h2>
+        <!-- input -->
+        <label class="input input--primary" style="max-width: 350px; display: block;">
+            <span class="input-label">name*</span>
+            <input placeholder="Placeholder" type="text">
+        </label>
+        <!-- input -->
+        <label class="input input--primary" style="max-width: 350px; display: block;">
+            <span class="input-label">name*</span>
+            <input placeholder="Disabled" type="text" disabled>
+        </label>
+        <!-- input -->
+        <label class="input input--primary" style="max-width: 350px; display: block;">
+            <span class="input-label">name*</span>
+            <input placeholder="Invalid" type="text" class="ng-touched ng-invalid">
+            <div class="validator message">* fill the field</div>
+        </label>
+    </form>
+
+    <form class="form form--primary z-elevation-6">
+        <h2>Select</h2>
+        <!-- Select -->
+        <div class="label">Select</div>
+        <div class="select select--primary --full-width">
+            <select>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+            </select>
+        </div>
+    </form>
+
+    <form class="form form--primary z-elevation-2">
+        <h2>Table</h2>
+        <!-- Table -->
+        <table class="table table--primary">
+            <thead>
+                <tr>
+                    <th class="text-left">Header 1</th>
+                    <th class="text-center">Header 2</th>
+                    <th class="text-center">Header 3</th>
+                    <th class="text-right">Header 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-left">Lemon</td>
+                    <td class="text-center">Orange</td>
+                    <td class="td-center">
+                        <label class="check check--primary">
+                            <input type="checkbox">
+                            <span class="thumb"></span>
+                        </label>
+                    </td>
+                    <td class="text-right">Kiwi</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Sugar</td>
+                    <td class="text-center">Salt</td>
+                    <td class="td-center">
+                        <label class="check check--primary">
+                            <input type="checkbox">
+                            <span class="thumb"></span>
+                        </label>
+                    </td>
+                    <td class="text-right">Pepper</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Fork</td>
+                    <td class="text-center">Knife</td>
+                    <td class="td-center">
+                        <label class="check check--primary">
+                            <input type="checkbox">
+                            <span class="thumb"></span>
+                        </label>
+                    </td>
+                    <td class="text-right">Spoon</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Cup</td>
+                    <td class="text-center">Glass</td>
+                    <td class="td-center">
+                        <label class="check check--primary">
+                            <input type="checkbox">
+                            <span class="thumb"></span>
+                        </label>
+                    </td>
+                    <td class="text-right">Pitcher</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <form class="form form--primary z-elevation-4">
+        <h2>Buttons</h2>
+        <!-- Button -->
+        <button class="button button--primary" onclick="">primary</button>
+        <button class="button button--orange" onclick="">orange</button>
+        <button class="button button--red" onclick="">red</button>
+        <button class="button button--blue" onclick="">blue</button>
+    </form>
+
+    <form class="form form--primary z-elevation-8">
+        <h2>Tabs</h2>
+        <!-- tabs -->
+        <div class="tabs tabs--primary">
+            <a href="#" title="Tab 1" class="tabs-item">Tab 1</a>
+            <a href="#" title="Tab 2" class="tabs-item is-selected">Tab 2</a>
+            <a href="#" title="Tab 3" class="tabs-item">Tab 3</a>
+            <a href="#" title="Tab 4" class="tabs-item">Tab 4</a>
+        </div>
+    </form>
+</body>
+
+<script>
+    var changeThemeBtn = document.getElementById("toggle-theme");
+    var currentTheme, loadedLight, loadedDark;
+    changeTheme();
+
+    changeThemeBtn.addEventListener("click", () => {
+        changeTheme();
+    });
+
+    function changeTheme() {
+        var previousTheme = currentTheme;
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        changeThemeBtn.textContent = currentTheme;
+        document.body.classList.remove(previousTheme);
+        document.body.classList.add(currentTheme);
+
+        if (currentTheme === 'light' && !loadedLight) {
+            loadStyle('../dist/iconsoft-ui-kit.light.min.css');
+            loadedLight = true;
+        } else if (currentTheme === 'dark' && !loadedDark) {
+            loadStyle('../dist/iconsoft-ui-kit.dark.min.css');
+            loadedDark = true;
+        }
+    }
+
+    function loadStyle(url) {
+        document.getElementsByTagName("head")[0].insertAdjacentHTML(
+            "beforeend",
+            "<link rel=\"stylesheet\" href=\"" + url + "\" />");
+    }
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+@import '../themes/themify';
+@import '../base/reset-button';
+@import '../utils/px2rem';
+
+$ripple-size: px2rem(100);
+
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+@mixin button($themes) {
+    .button {
+        @include reset-button();
+        position: relative;
+        overflow: hidden;
+        transition: all 0.1s ease-in-out;
+        
+        &:disabled {
+            box-shadow: none;
+        }
+
+        &::after {
+            display: none;
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+    
+            width: $ripple-size;
+            height: $ripple-size;
+            margin-top: -$ripple-size / 2;
+            margin-left: -$ripple-size / 2;
+    
+            top: 50%;
+            left: 50%;
+    
+            animation: ripple 1s;
+            opacity: 0;
+        }
+
+        &:focus:not(:active)::after {
+            display: block;
+        }
+
+        @include themify($themes) {
+            color: themed(font-color);
+            background: themed(bg-normal);
+
+            &:disabled {
+                background: themed(bg-disabled);
+            }
+
+            &:active {
+                background: rgba(themed(bg-normal), 0.5);
+            }
+
+            &::after {
+                background-color: themed(ripple-color);
+            }
+        }
+    }
+}

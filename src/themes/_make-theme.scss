@@ -1,0 +1,9 @@
+@function make-theme($colors...) {
+	$i: 0;
+	$result: ();
+	@each $color in $colors {
+		$i: $i + 1;
+		$result: map-merge($result, (param-#{$i}: $color));
+	}
+	@return $result;
+}

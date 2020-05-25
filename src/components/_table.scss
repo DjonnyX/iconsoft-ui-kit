@@ -1,0 +1,51 @@
+@import "../themes/themify";
+
+@mixin table($themes) {
+    .table {
+        border-collapse: collapse;
+        max-width: 100%;
+        width: 100%;
+
+        th,
+        td {
+            position: relative;
+        }
+
+        th {
+            white-space: nowrap;
+        }
+
+        @include themify($themes) {
+            background-color: themed(main-bg-color);
+            border: themed(main-border);
+            color: themed(font-color);
+            font-family: themed(font);
+
+            th,
+            td {
+                border-bottom: themed(cell-border);
+                padding: themed(cell-padding);
+            }
+
+            td {
+                font-size: themed(td-font-size);
+            }
+
+            tr:nth-child(2n+1) {
+                background: themed(td-odd-color);
+            }
+
+            thead {
+                border-bottom: themed(head-border);
+            }
+
+            th {
+                background-color: themed(th-bg-color);
+                color: themed(th-font-color);
+                font-size: themed(th-font-size);
+                /*font-weight: $fw-table-heading;*/
+                padding: themed(th-padding);
+            }
+        }
+    }
+}
