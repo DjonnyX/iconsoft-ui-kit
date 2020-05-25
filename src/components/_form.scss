@@ -2,7 +2,8 @@
 @import '../utils/px2rem';
 
 @mixin form($themes) {
-    form {
+    form,
+    .form {
         overflow: hidden;
         .form-input__group label {
             display: inline-flex;
